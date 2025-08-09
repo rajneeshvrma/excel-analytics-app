@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaFacebook,
   FaTwitter,
@@ -27,6 +28,13 @@ const AboutUsPage = () => {
     localStorage.setItem("theme", newTheme);
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 0 },
+    visible: { opacity: 1, y: 1 },
+  };
+
+  const [key, setKey] = useState(0);
+
   useEffect(() => {
     const html = document.documentElement;
     if (theme === "dark") {
@@ -53,6 +61,12 @@ const AboutUsPage = () => {
           >
             Home
           </Link>
+          <a
+            href="#story"
+            className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
+          >
+            Our Story
+          </a>
           <a
             href="#mission"
             className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
@@ -93,41 +107,83 @@ const AboutUsPage = () => {
       </header>
 
       {/* About Us Hero Section */}
-      <section
-        className="min-h-[60vh] flex items-center bg-cover bg-center pt-20"
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+        onViewportEnter={() => setKey((prev) => prev + 1)}
+        transition={{ duration: 0.6 }}
+        className="relative min-h-[100vh] flex items-center bg-cover bg-center pt-20 "
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3')`,
         }}
       >
-        <div className="bg-gray-900 dark:bg-white bg-opacity-70 dark:bg-opacity-70 w-full min-h-[60vh] flex items-center justify-center transition-colors duration-500">
-          <div className="max-w-5xl mx-auto px-6 text-center text-white dark:text-gray-900">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-md">
-              We Are Passionate About Data
-            </h1>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto drop-shadow-sm">
-              Helping businesses turn complex spreadsheets into simple,
-              actionable insights.
-            </p>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gray-900 dark:bg-white bg-opacity-70 dark:bg-opacity-70 transition-colors duration-500"></div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white dark:text-gray-900">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4 drop-shadow-md ">
+            We Are Passionate About Data
+          </h1>
+          <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto drop-shadow-sm mb-8 leading-relaxed mt-7 font-['Work_Sans']">
+            Helping businesses turn complex spreadsheets into simple, actionable
+            insights.
+          </p>
+
+          <p className="text-base md:text-lg font-light max-w-3xl mx-auto mb-10 -mt-4 text-gray-300 dark:text-gray-700 leading-relaxed tracking-wide font-['Work_Sans']">
+            At the heart of our work lies a simple belief: data should empower,
+            not overwhelm. We partner with businesses to uncover patterns,
+            streamline workflows, and turn raw information into a competitive
+            advantage.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#mission"
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition font-medium tracking-wide"
+            >
+              Learn More
+            </a>
+            <a
+              href="/contact-us"
+              className="px-6 py-3 bg-green-500 text-white hover:bg-green-600 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 rounded-full shadow-lg transition font-medium tracking-wide"
+            >
+              Get in Touch
+            </a>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-gray-900 dark:bg-white">
-        <div className="container mx-auto px-6 max-w-5xl">
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+        onViewportEnter={() => setKey((prev) => prev + 1)}
+        transition={{ duration: 0.6 }}
+        id="story"
+        className="py-20 bg-gray-900 dark:bg-white scroll-mt-36"
+      >
+        <div className="container mx-auto px-6 max-w-6xl">
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2">
+            {/* Image */}
+            <div className="md:w-1/2 flex justify-start">
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca8849d1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1615992174118-9b8e9be025e7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0"
                 alt="Our Story"
-                className="rounded-2xl shadow-xl"
+                className="rounded-2xl shadow-xl w-[120%] h-auto -ml-20"
               />
             </div>
+
+            {/* Text */}
             <div className="md:w-1/2">
               <h2 className="text-4xl font-bold text-white dark:text-gray-900 mb-4">
                 Our Story
               </h2>
-              <p className="text-lg text-gray-400 dark:text-gray-600 mb-4">
+              <p className="text-lg text-gray-400 dark:text-gray-600 mb-4 text-justify">
                 ExcelAnalytics was born out of a simple frustration: the
                 difficulty of getting meaningful insights from Excel files
                 without spending hours on manual work. Our founders, a group of
@@ -135,7 +191,7 @@ const AboutUsPage = () => {
                 could automate this process, making powerful data analysis
                 accessible to everyone.
               </p>
-              <p className="text-lg text-gray-400 dark:text-gray-600">
+              <p className="text-lg text-gray-400 dark:text-gray-600 text-justify">
                 Since our inception in 2022, we have been dedicated to building
                 a user-friendly and powerful tool that empowers businesses to
                 make smarter, faster decisions. We believe that with the right
@@ -144,12 +200,18 @@ const AboutUsPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision Section */}
-      <section
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+        onViewportEnter={() => setKey((prev) => prev + 1)}
+        transition={{ duration: 0.6 }}
         id="mission"
-        className="py-20 bg-gray-800 dark:bg-gray-200 text-center"
+        className="py-20 bg-gray-800 dark:bg-gray-200 text-center scroll-mt-36"
       >
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-4xl font-bold text-white dark:text-gray-900 mb-12">
@@ -188,12 +250,18 @@ const AboutUsPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Meet Our Team Section */}
-      <section
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+        onViewportEnter={() => setKey((prev) => prev + 1)}
+        transition={{ duration: 0.6 }}
         id="team"
-        className="py-20 bg-gray-900 dark:bg-white text-center"
+        className="py-20 pb-28 bg-gray-900 dark:bg-white text-center scroll-mt-2"
       >
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-4xl font-bold text-white dark:text-gray-900 mb-12">
@@ -231,7 +299,7 @@ const AboutUsPage = () => {
             {/* Team Member 3 */}
             <div className="flex flex-col items-center">
               <img
-                src="https://images.unsplash.com/photo-1589329064409-58e137f8ed25?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Team Member Mike Johnson"
                 className="w-40 h-40 rounded-full object-cover shadow-lg mb-4"
               />
@@ -244,7 +312,7 @@ const AboutUsPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

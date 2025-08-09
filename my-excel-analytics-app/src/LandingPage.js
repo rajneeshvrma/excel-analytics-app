@@ -43,15 +43,6 @@ const LandingPage = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const arrowVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: { duration: 1, ease: "easeInOut" },
-    },
-  };
-
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -649,7 +640,7 @@ const LandingPage = () => {
           </p>
           <Link
             to="/register"
-            className="bg-white text-blue-600 text-lg px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-colors duration-300 shadow-lg transform hover:scale-105"
+            className="bg-green-500 text-white text-lg px-8 py-4 rounded-full font-mono hover:bg-green-600 transition-colors duration-300 shadow-lg transform hover:scale-105"
           >
             Start Your Free Trial
           </Link>

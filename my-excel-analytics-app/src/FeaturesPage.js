@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaFacebook,
   FaTwitter,
@@ -53,17 +54,17 @@ const FeaturesPage = () => {
             Home
           </Link>
           <Link
-            to="/about"
+            to="/about-us"
             className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
           >
             About Us
           </Link>
-          <Link
-            to="/features"
+          <a
+            href="#features"
             className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
           >
             Features
-          </Link>
+          </a>
         </nav>
         <div className="flex items-center space-x-4">
           <button
@@ -104,15 +105,32 @@ const FeaturesPage = () => {
       </section>
 
       {/* Key Features Grid */}
-      <section className="py-12 bg-gray-800 dark:bg-gray-200">
+      <section
+        id="features"
+        className="py-12 bg-gray-800 dark:bg-gray-200 scroll-mt-20"
+      >
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-3xl font-bold text-white dark:text-gray-900 text-center mb-10">
             All-in-One Data Visualization Tool
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature Card 1: Excel Upload */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaCloudUploadAlt className="text-5xl text-blue-400 dark:text-blue-600 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaCloudUploadAlt className="text-5xl text-blue-400 dark:text-blue-600 mx-auto mb-4" />
+              </motion.div>
+
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 Seamless Excel Upload
               </h3>
@@ -120,11 +138,24 @@ const FeaturesPage = () => {
                 Effortlessly upload any .xls or .xlsx file to our platform for
                 instant data analysis.
               </p>
-            </div>
+            </motion.div>
 
             {/* Feature Card 2: Interactive Charts */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaChartLine className="text-5xl text-green-400 dark:text-green-600 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaChartLine className="text-5xl text-green-400 dark:text-green-600 mx-auto mb-4" />
+              </motion.div>
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 Interactive 2D & 3D Charts
               </h3>
@@ -132,11 +163,24 @@ const FeaturesPage = () => {
                 Generate dynamic 2D and 3D visualizations with customizable X
                 and Y axes directly from your data.
               </p>
-            </div>
+            </motion.div>
 
             {/* Feature Card 3: Downloadable Graphs */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaDownload className="text-5xl text-purple-400 dark:text-purple-600 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaDownload className="text-5xl text-blue-400 dark:text-blue-600 mx-auto mb-4" />
+              </motion.div>
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 Downloadable Visuals
               </h3>
@@ -144,11 +188,24 @@ const FeaturesPage = () => {
                 Easily download your generated graphs and charts in various
                 formats for presentations and reports.
               </p>
-            </div>
+            </motion.div>
 
             {/* Feature Card 4: AI Insights */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaMicrochip className="text-5xl text-orange-400 dark:text-orange-600 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaMicrochip className="text-5xl text-orange-400 dark:text-orange-600 mx-auto mb-4" />
+              </motion.div>
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 AI-Powered Insights
               </h3>
@@ -156,11 +213,24 @@ const FeaturesPage = () => {
                 Get smart insights and summary reports from your data using our
                 optional AI integration.
               </p>
-            </div>
+            </motion.div>
 
             {/* Feature Card 5: User Dashboard */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaUserShield className="text-5xl text-red-400 dark:text-red-600 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaUserShield className="text-5xl text-red-400 dark:text-red-600 mx-auto mb-4" />
+              </motion.div>
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 Personalized Dashboard
               </h3>
@@ -168,11 +238,24 @@ const FeaturesPage = () => {
                 Your entire history of uploads and analysis is securely saved
                 and visible on your personal dashboard.
               </p>
-            </div>
+            </motion.div>
 
             {/* Feature Card 6: Admin Management */}
-            <div className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300">
-              <FaUsersCog className="text-5xl text-blue-300 dark:text-blue-500 mx-auto mb-4" />
+            <motion.div
+              className="bg-gray-900 dark:bg-white p-6 rounded-2xl shadow-lg text-center transition-transform hover:scale-105 duration-300"
+              whileHover="hover"
+              initial="initial"
+              variants={{ hover: { scale: 1.05 } }}
+            >
+              <motion.div
+                variants={{
+                  initial: { scale: 1, rotate: 0 },
+                  hover: { scale: 1.2, rotate: 10 },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaUsersCog className="text-5xl text-yellow-400 dark:text-yellow-600 mx-auto mb-4" />
+              </motion.div>
               <h3 className="text-xl font-bold text-white dark:text-gray-900 mb-2">
                 Admin Panel
               </h3>
@@ -180,7 +263,7 @@ const FeaturesPage = () => {
                 Admins have full control to manage users and monitor data usage
                 across the platform.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

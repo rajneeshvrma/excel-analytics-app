@@ -78,16 +78,10 @@ const ContactPage = () => {
             Home
           </Link>
           <Link
-            to="/about"
+            to="/about-us"
             className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
           >
             About Us
-          </Link>
-          <Link
-            to="/contact"
-            className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors duration-300"
-          >
-            Contact
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
@@ -117,7 +111,7 @@ const ContactPage = () => {
       </header>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gray-900 dark:bg-gray-100 transition-colors duration-500">
+      <section className="py-10 bg-gray-900 dark:bg-gray-100 transition-colors duration-500">
         <div className="container mx-auto px-6 max-w-5xl pt-16">
           <h1 className="text-4xl font-bold text-white dark:text-gray-900 text-center mb-4">
             Contact Us
