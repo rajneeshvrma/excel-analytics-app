@@ -1,3 +1,4 @@
+// 1. IMPORT KIYE GAYE - useState, useEffect, FaBars, FaTimes
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { DarkModeContext } from "./contexts/DarkModeContext";
 import { useAuth } from "./contexts/AuthContext";
@@ -21,6 +22,8 @@ import {
   FaMoon,
   FaStar,
   FaChartBar,
+  FaBars, // 2. NAYA IMPORT
+  FaTimes, // 3. NAYA IMPORT
 } from "react-icons/fa";
 
 const CompanyLogo = ({ name }) => (
@@ -33,8 +36,24 @@ const LandingPage = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [startTyping, setStartTyping] = useState(false);
   const [key, setKey] = useState(0);
-  const { token, userRole, logout } = useAuth(); 
-  const navigate = useNavigate(); 
+  const { token, userRole, logout } = useAuth();
+  const navigate = useNavigate();
+  
+  // 4. NAYA STATE - Mobile menu ke liye
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // 5. NAYA useEffect - Mobile menu khulne par page scroll lock karne ke liye
+  useEffect(() => {
+    if (isMenuOpen) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+    }
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
 
   // Helper to determine the correct dashboard path
   const getDashboardPath = () => {
@@ -50,8 +69,23 @@ const LandingPage = () => {
 
   const handleLogout = () => {
     logout();
+    setIsMenuOpen(false); // Menu band karein
     navigate('/'); // Navigate to landing page after logout
   };
+
+  // 6. NAYE NAV LINKS (Mobile menu ke liye)
+  const landingNavLinks = [
+    { name: 'Features', path: '#features' },
+    { name: 'How It Works', path: '#how-it-works' },
+    { name: 'Pricing', path: '#pricing' },
+    { name: 'Testimonials', path: '#testimonials' },
+    { name: 'FAQ', path: '#faq' },
+  ];
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
@@ -132,11 +166,11 @@ const LandingPage = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans leading-relaxed transition-colors duration-500">
       {/* Header/Navbar */}
+      {/* 7. (HEADER KI HEIGHT) Header ki height approx 4.5rem hai (py-4 + h-10) */}
       <header className="fixed top-0 left-0 w-full z-50 py-4 px-6 md:px-12 flex justify-between items-center bg-white/75 dark:bg-gray-900/75 backdrop-filter backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-500">
-        <Link to="/">
+        <Link to="/" onClick={handleLinkClick}>
           <div className="flex items-center space-x-2">
             <img src="/Sheet insights favicon.png" alt="SheetInsights" className="w-10 h-10 object-contain" />
-
 
             <span className="text-2xl font-bold truncate ml-2">
               <span className="text-black dark:text-white">Sheet</span>
@@ -145,45 +179,25 @@ const LandingPage = () => {
           </div>
         </Link>
 
+        {/* DESKTOP NAVIGATION */}
         <nav className="hidden md:flex space-x-6">
-          <a
-            href="#features"
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-          >
-            Features
-          </a>
-          <a
-            href="#how-it-works"
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-          >
-            How It Works
-          </a>
-          <a
-            href="#pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-          >
-            Pricing
-          </a>
-          <a
-            href="#testimonials"
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-          >
-            Testimonials
-          </a>
-          <a
-            href="#faq"
-            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
-          >
-            FAQ
-          </a>
+          {landingNavLinks.map(link => (
+             <a
+              key={link.name}
+              href={link.path}
+              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
+            >
+              {link.name}
+            </a>
+          ))}
         </nav>
-        <div className="flex items-center space-x-4">
-          {/* Now using the toggleDarkMode function from the context */}
+
+        {/* DESKTOP ACTION BUTTONS */}
+        <div className="hidden md:flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
           >
-            {/* Now using the isDarkMode state from the context */}
             {isDarkMode ? (
               <FaSun className="h-5 w-5" />
             ) : (
@@ -191,10 +205,9 @@ const LandingPage = () => {
             )}
           </button>
           {token ? (
-            // If user is logged in, show a dynamic Dashboard link and Logout
             <>
               <Link
-                to={getDashboardPath()} // Use the function to set the dynamic path
+                to={getDashboardPath()}
                 className="bg-green-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-green-600 transition-colors duration-300"
               >
                 Dashboard
@@ -207,7 +220,6 @@ const LandingPage = () => {
               </button>
             </>
           ) : (
-            // If user is logged out, show Login and Register
             <>
               <Link
                 to="/login"
@@ -224,7 +236,50 @@ const LandingPage = () => {
             </>
           )}
         </div>
+
+        {/* 8. NAYA ADD KIYA GAYA - Mobile Menu Button (Hamburger) */}
+        <div className="md:hidden flex items-center">
+            <button onClick={toggleDarkMode} className="p-2 mr-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+                {isDarkMode ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
+            </button>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 dark:text-gray-300">
+                {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+        </div>
       </header>
+
+      {/* 9. NAYA ADD KIYA GAYA - Mobile Menu Panel */}
+      {isMenuOpen && (
+          <div className="md:hidden fixed top-0 left-0 w-full h-screen pt-[4.5rem] bg-white dark:bg-gray-900 z-40 overflow-y-auto">
+              {/* Iski height 100vh - header height hai */}
+              <nav className="flex flex-col items-center space-y-4 p-6">
+                  {landingNavLinks.map(link => (
+                      <a 
+                        key={link.name} 
+                        href={link.path} 
+                        className="text-gray-700 dark:text-gray-300 text-lg py-2" 
+                        onClick={handleLinkClick}
+                      >
+                        {link.name}
+                      </a>
+                  ))}
+                  <div className="border-t border-gray-200 dark:border-gray-700 w-full my-4"></div>
+                  <div className="flex flex-col items-center space-y-4 w-full">
+                      {token ? (
+                          <>
+                              <Link to={getDashboardPath()} className="bg-green-500 text-white w-full text-center px-4 py-2 rounded-full font-semibold" onClick={handleLinkClick}>Dashboard</Link>
+                              <button onClick={handleLogout} className="text-gray-700 dark:text-gray-300">Logout</button>
+                          </>
+                      ) : (
+                          <>
+                              <Link to="/login" className="text-gray-700 dark:text-gray-300" onClick={handleLinkClick}>Login</Link>
+                              <Link to="/register" className="bg-green-500 text-white w-full text-center px-4 py-2 rounded-full font-semibold" onClick={handleLinkClick}>Register</Link>
+                          </>
+                      )}
+                  </div>
+              </nav>
+          </div>
+      )}
 
       {/* Hero Section */}
       <motion.section
@@ -237,6 +292,7 @@ const LandingPage = () => {
         transition={{ duration: 0.6 }}
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center scroll-mt-20"
       >
+      {/* ... (Baaki saara code same hai) ... */}
       {/* Video Background */}
         <div className="absolute top-0 left-0 w-full h-full z-0">
           <video

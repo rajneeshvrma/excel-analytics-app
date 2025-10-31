@@ -73,11 +73,14 @@ const Header = () => {
 
             {/* Mobile Menu Button (Hamburger) */}
             <div className="md:hidden flex items-center">
+                <button onClick={toggleDarkMode} className="p-2 mr-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+                    {isDarkMode ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
+                </button>
                 <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 dark:text-gray-300">
                     {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                 </button>
             </div>
-            
+
             {/* Mobile Menu Panel */}
             {isMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-xl">

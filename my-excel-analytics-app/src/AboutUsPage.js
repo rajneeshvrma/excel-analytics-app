@@ -158,19 +158,34 @@ const AboutUsPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="flex flex-col items-center">
-              <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2670&auto=format&fit=crop" alt="Team Member John Doe" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">John Doe</h3>
-              <p className="text-blue-500 text-lg">CEO & Founder</p>
+              <img src="https://media.licdn.com/dms/image/v2/D5603AQGAFqDci5xVWA/profile-displayphoto-scale_200_200/B56Zoa9etXJQAc-/0/1761388917222?e=1763596800&v=beta&t=Vh19WUEvY-UWxnJOs-7WgwPXTMIlNcg8YzVb-1nZdR4" alt="Team Member Rajneesh" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Rajneesh</h3>
+              <p className="text-blue-500 text-lg">Lead Developer</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop" alt="Team Member Jane Smith" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Jane Smith</h3>
-              <p className="text-blue-500 text-lg">Chief Technology Officer</p>
+              <img src="https://avatars.githubusercontent.com/u/154683976?v=4" alt="Team Member JTanmay Upadhyay" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Tanmay Upadhyay</h3>
+              <p className="text-blue-500 text-lg">Lead Backend Developer</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop" alt="Team Member Mike Johnson" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Mike Johnson</h3>
-              <p className="text-blue-500 text-lg">Head of Product</p>
+              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Team Member Logesh" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Logesh</h3>
+              <p className="text-blue-500 text-lg">Head of UI/UX Design</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src="https://media.licdn.com/dms/image/v2/D5635AQGKXrS4cW2haw/profile-framedphoto-shrink_100_100/B56Zf65B1BHUAs-/0/1752260943514?e=1762066800&v=beta&t=pTQl57mPBZGGq-GFC2w1kMZ0klCr-rRpeZjksEKAilc" alt="Team Member Siddardha Karumuri" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Siddardha Karumuri</h3>
+              <p className="text-blue-500 text-lg">Project Contributor</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Team Member Krish" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Krish</h3>
+              <p className="text-blue-500 text-lg">Team Member</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Team Member Hemu" className="w-40 h-40 rounded-full object-cover shadow-lg mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Hemu</h3>
+              <p className="text-blue-500 text-lg">Team Member</p>
             </div>
           </div>
         </div>
