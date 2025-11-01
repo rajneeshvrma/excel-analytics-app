@@ -125,7 +125,7 @@ const LoginPage = () => {
     setForgotPasswordError('');
     setForgotPasswordMessage('');
     try {
-      const response = await fetch("http://localhost:5000/api/forgot-password", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: forgotPasswordEmail }),
@@ -146,7 +146,7 @@ const LoginPage = () => {
     exit: { opacity: 0, y: -10, scale: 0.95 }
   };
   const roles = [{ value: 'user', label: 'User' }, { value: 'admin', label: 'Admin' }];
-  
+
   const videoUrl = "https://cdn.pixabay.com/video/2016/09/21/5441-184226793_medium.mp4";
   const layoutTransition = { type: "spring", stiffness: 500, damping: 50 };
 
@@ -156,12 +156,12 @@ const LoginPage = () => {
 
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            src={videoUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          src={videoUrl}
         />
         <div className={`absolute inset-0 transition-colors duration-300 ${isDarkMode ? 'bg-black bg-opacity-50' : 'bg-white bg-opacity-10'}`}></div>
       </div>
@@ -170,7 +170,7 @@ const LoginPage = () => {
         {isDarkMode ? <FaSun className="h-6 w-6" /> : <FaMoon className="h-6 w-6" />}
       </button>
 
-      <motion.div 
+      <motion.div
         layout
         transition={layoutTransition}
         className="relative z-10 w-full max-w-lg p-6 md:p-10 rounded-2xl shadow-2xl text-center border border-white/20 backdrop-filter backdrop-blur-lg bg-white/20 dark:bg-gray-800/20"
@@ -237,7 +237,7 @@ const LoginPage = () => {
 
       {showForgotPasswordModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-40">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
