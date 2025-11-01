@@ -86,7 +86,7 @@ const Profile = () => {
         special: false,
     });
 
-    const API_URL = process.env.REACT_APP_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL + "/api";
     const [alert, setAlert] = useState({ show: false, message: '', type: '' });
 
     // ✅ NEW: useEffect to auto-hide the alert
