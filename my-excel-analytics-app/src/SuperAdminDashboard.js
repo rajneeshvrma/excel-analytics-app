@@ -138,7 +138,7 @@ const SuperAdminDashboard = () => {
   const [modalAction, setModalAction] = useState(null);
   const [newUser, setNewUser] = useState({ fullname: "", email: "", role: "user", phoneNumber: "", employeeId: "" });
   
-  const API_URL = process.env.REACT_APP_API_URL ;
+  const API_URL = process.env.REACT_APP_API_URL + '/api';
 
   // --- HELPERS ---
   const showTemporaryMessage = (message, type = 'success') => {
